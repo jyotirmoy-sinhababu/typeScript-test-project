@@ -7,9 +7,19 @@ import { useState } from 'react';
 const Home = () => {
   const [inputFieldData, setInputFieldData] = useState<any>([]);
 
+  const handleSubmit = (data: Object) => {
+    if (data) {
+      setInputFieldData([
+        ...inputFieldData,
+        { id: Math.floor(Math.random() * 1000), data: Object },
+      ]);
+      console.log(data);
+    }
+  };
+
   return (
     <div>
-      <InputField />
+      <InputField handleSubmit={handleSubmit} />
     </div>
   );
 };
