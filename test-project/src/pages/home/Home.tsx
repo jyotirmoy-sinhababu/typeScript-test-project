@@ -1,6 +1,7 @@
 import React from 'react';
 
 import InputField from '../../components/InputField';
+import Nav from '../../components/Nav';
 
 import { useState } from 'react';
 
@@ -25,10 +26,13 @@ const Home = () => {
 
   return (
     <>
-      <div>
+      <div className='home-nav-cnt'>
+        <Nav />
+      </div>
+      <div className='home-inputField-cnt'>
         <InputField handleSubmit={handleSubmit} />
       </div>
-      <div>
+      <div className='home-display-cnt'>
         {inputFieldData ? (
           inputFieldData?.map((item: any) => {
             return <div key={item.id}>{item.data.todo}</div>;
