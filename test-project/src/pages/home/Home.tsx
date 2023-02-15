@@ -12,23 +12,32 @@ interface data {
 const Home = () => {
   const [inputFieldData, setInputFieldData] = useState<any>([]);
 
-  const handleSubmit = (data: Object) => {
+  const handleSubmit = (data: data) => {
     if (data) {
       setInputFieldData([
         ...inputFieldData,
-        { id: Math.floor(Math.random() * 1000), data: Object },
+        { id: Math.floor(Math.random() * 1000), data },
       ]);
+      console.log('done');
     }
   };
   console.log(inputFieldData);
 
   return (
     <>
-      {inputFieldData?.map((item: any) => {
-        return <div key={item.id}></div>;
-      })}
       <div>
         <InputField handleSubmit={handleSubmit} />
+      </div>
+      <div>
+        {inputFieldData ? (
+          inputFieldData?.map((item: any) => {
+            return <div key={item.id}>{item.data.todo}</div>;
+          })
+        ) : (
+          <div>
+            <p>note your task</p>
+          </div>
+        )}
       </div>
     </>
   );

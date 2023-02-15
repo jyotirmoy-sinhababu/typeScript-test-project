@@ -3,7 +3,7 @@ import React from 'react';
 import { useState } from 'react';
 
 interface props {
-  handleSubmit: (todo: object) => void;
+  handleSubmit: (todo: any) => void;
 }
 
 const InputField = ({ handleSubmit }: props) => {
