@@ -5,8 +5,9 @@ const Edit = () => {
     <div>
       <form>
         <input type='text' placeholder='write your note' name='todo' />
-        <button type='submit'>Add</button>
+        <button type='submit'>Save</button>
       </form>
+      <button>Cancel</button>
     </div>
   );
 };

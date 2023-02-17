@@ -36,6 +36,7 @@ const Home = () => {
 
   const handleDelete = (param: any) => {
     const filterData = inputFieldData.filter((lists: lists) => {
+      debugger;
       return lists.id != param.id;
     });
     setInputFieldData(filterData);
