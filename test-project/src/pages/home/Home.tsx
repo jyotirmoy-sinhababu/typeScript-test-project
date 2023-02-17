@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Edit from '../../components/Edit';
+
 import InputField from '../../components/InputField';
 import Nav from '../../components/Nav';
 
@@ -12,6 +14,7 @@ interface data {
 
 const Home = () => {
   const [inputFieldData, setInputFieldData] = useState<any>([]);
+  const [isEdit, setEdit] = useState<boolean>(false);
 
   const handleSubmit = (data: data) => {
     if (data) {
@@ -22,6 +25,13 @@ const Home = () => {
       console.log('done');
     }
   };
+
+  const handleEdit = () => {
+    setEdit(true);
+  };
+
+  const handleDelete = () => {};
+
   console.log(inputFieldData);
 
   return (
@@ -35,7 +45,37 @@ const Home = () => {
       <div className='home-display-cnt'>
         {inputFieldData ? (
           inputFieldData?.map((item: any) => {
-            return <div key={item.id}>{item.data.todo}</div>;
+            return (
+              <div key={item.id}>
+                <p> {item.data.todo}</p>
+                <div>
+                  <button>
+                    <svg
+                      xmlns='http://www.w3.org/2000/svg'
+                      width='16'
+                      height='16'
+                      fill='currentColor'
+                      className='bi bi-x-lg'
+                      viewBox='0 0 16 16'
+                    >
+                      <path d='M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z' />
+                    </svg>
+                  </button>
+                  <button onClick={handleEdit}>
+                    <svg
+                      xmlns='http://www.w3.org/2000/svg'
+                      width='16'
+                      height='16'
+                      fill='currentColor'
+                      className='bi bi-check2'
+                      viewBox='0 0 16 16'
+                    >
+                      <path d='M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z' />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            );
           })
         ) : (
           <div>
@@ -43,6 +83,12 @@ const Home = () => {
           </div>
         )}
       </div>
+
+      {isEdit ? (
+        <div>
+          <Edit />
+        </div>
+      ) : null}
     </>
   );
 };
