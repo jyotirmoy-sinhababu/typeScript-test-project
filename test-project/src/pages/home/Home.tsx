@@ -12,6 +12,11 @@ interface data {
   id: number;
 }
 
+interface lists {
+  lists: object;
+  id: number;
+}
+
 const Home = () => {
   const [inputFieldData, setInputFieldData] = useState<any>([]);
   const [isEdit, setEdit] = useState<boolean>(false);
@@ -22,7 +27,6 @@ const Home = () => {
         ...inputFieldData,
         { id: Math.floor(Math.random() * 1000), data },
       ]);
-      console.log('done');
     }
   };
 
@@ -30,7 +34,12 @@ const Home = () => {
     setEdit(true);
   };
 
-  const handleDelete = () => {};
+  const handleDelete = (param: any) => {
+    const filterData = inputFieldData.filter((lists: lists) => {
+      return lists.id != param.id;
+    });
+    setInputFieldData(filterData);
+  };
 
   console.log(inputFieldData);
 
@@ -49,7 +58,11 @@ const Home = () => {
               <div key={item.id}>
                 <p> {item.data.todo}</p>
                 <div>
-                  <button>
+                  <button
+                    onClick={() => {
+                      handleDelete(item);
+                    }}
+                  >
                     <svg
                       xmlns='http://www.w3.org/2000/svg'
                       width='16'
