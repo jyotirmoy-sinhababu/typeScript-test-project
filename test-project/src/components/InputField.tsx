@@ -1,16 +1,14 @@
 import React from 'react';
 
-import Edit from './Edit';
-
 import { useState } from 'react';
 
 interface props {
   handleSubmit: (todo: any) => void;
+  isEdit: boolean;
 }
 
-const InputField = ({ handleSubmit }: props) => {
+const InputField = ({ handleSubmit, isEdit }: props) => {
   const [todo, setTodo] = useState<object>({});
-  const [isEdit, setEdit] = useState<boolean>(false);
 
   const handleChange = (e: any) => {
     setTodo({ ...(todo as object), [e.target.name]: e.target.value });
@@ -32,11 +30,7 @@ const InputField = ({ handleSubmit }: props) => {
         />
         <button type='submit'>Add</button>
       </form>
-      {isEdit ? (
-        <div>
-          <Edit />
-        </div>
-      ) : null}
+      <div></div>
     </div>
   );
 };

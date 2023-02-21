@@ -1,7 +1,5 @@
 import React from 'react';
 
-import Edit from '../../components/Edit';
-
 import InputField from '../../components/InputField';
 import Nav from '../../components/Nav';
 
@@ -36,7 +34,6 @@ const Home = () => {
 
   const handleDelete = (param: any) => {
     const filterData = inputFieldData.filter((lists: lists) => {
-      debugger;
       return lists.id != param.id;
     });
     setInputFieldData(filterData);
@@ -97,12 +94,6 @@ const Home = () => {
           </div>
         )}
       </div>
-
-      {isEdit ? (
-        <div>
-          <Edit />
-        </div>
-      ) : null}
     </>
   );
 };
